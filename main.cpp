@@ -50,7 +50,11 @@ int main() {
             msg = "!!!You need enter number!!!";
         }
         std::cout << "(" << n << "," << m << ") -> " << data << std::endl;
-        addCell(n, m, data, matrix);
+        try{
+            addCell(n, m, data, matrix);
+        } catch (std::invalid_argument const& e) {
+            std::cout << e.what() << std::endl;
+        }
     }
     std::cout << "Source matrix" << std::endl;
     printMatrix(matrix);
@@ -59,6 +63,8 @@ int main() {
     printMatrix(r);
     freeMatrix(matrix);
     freeMatrix(r);
+    delete matrix;
+    delete r;
     return 0;
 }
 

@@ -11,6 +11,9 @@ namespace matrix{
     }
 
     int addCell(int x, int y, int data, Matrix* matrix){
+        if(x*y < 0 || x > matrix->n || y > matrix->m)
+            throw std::invalid_argument("Out of range");
+
         if(matrix->head == nullptr){
             matrix->head = new Row();
             matrix->head->index = x;
